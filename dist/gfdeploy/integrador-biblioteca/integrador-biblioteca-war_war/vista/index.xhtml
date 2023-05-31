@@ -1,34 +1,69 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
     <ui:composition template="./../templates/principal.xhtml">
 
         <ui:define name="top">
-            <p:outputLabel value="BIENVENIDO BROU"/>
+            <center>
+                <p:outputLabel value="BIENVENIDO AL SISTEMA"/>
+            </center>
+
+        </ui:define>
+
+        <ui:define name="menu">
+
+            <p:commandButton value="Principal" action="index.xhtml" styleClass="menu-buttons" />
+            <br/>
+            <p:commandButton value="Prestamos" action="prestamos.xhtml" styleClass="menu-buttons" />
+            <br/>
+            <p:commandButton value="Devoluciones" action="devoluciones.xhtml" styleClass="menu-buttons" />
+            <br/>
+            <p:commandButton value="Usuarios" action="usuarios.xhtml" styleClass="menu-buttons" />
+            <br/>
+            <p:commandButton value="Libros" action="libros.xhtml" styleClass="menu-buttons" />
+            <br/>
+            <p:commandButton value="Reportes" action="reportes.xhtml" styleClass="menu-buttons" />
+
         </ui:define>
 
         <ui:define name="content">
-            <center>
-                <h:form>
-                    
-                    <h:outputText value="Seleccione una Opción:" styleClass="title" />
-                    <br/><br/>
-                    <p:commandButton value="Prestamos" action="#"/>
-                    <br/><br/>
-                    <p:commandButton value="Devoluciones" action="#"/>
-                    <br/><br/>
-                    <p:commandButton value="Usuarios" action="#"/>
-                    <br/><br/>
-                    <p:commandButton value="Libros" action="#"/>
-                    <br/><br/>
-                    <p:commandButton value="Reportes" action="#"/>
-                    
-                </h:form>
-            </center>
+            <h:form class="top-form">
+                <p:panelGrid columns="2" columnClasses="leftColumn,rightColumn">
+                    <!-- Panel de préstamos -->
+                    <p:panel header="Préstamos">
+                        <p:outputLabel value="Controle y administre de forma óptima y fácil el flujo de préstamos de Libros." />
+                    </p:panel>
+                    <!-- Panel de devoluciones -->
+                    <p:panel header="Devoluciones">
+                        <p:outputLabel value="Controle y administre de forma óptima y fácil el flujo de devoluciones de Libros." />
+                    </p:panel>
+                    <!-- Panel de registro de usuarios y libros -->
+                    <p:panel header="Registro de Usuarios y Libros Nuevos">
+                        <p:outputLabel value="Registre nuevos usuarios y libros en la biblioteca." />
+                    </p:panel>
+                    <!-- Panel de edición de usuarios y libros -->
+                    <p:panel header="Edición de Usuarios y Libros Existente">
+                        <p:outputLabel value="Edite usuarios y libros existentes en la biblioteca." />
+                    </p:panel>
+                    <!-- Panel de eliminación de registros -->
+                    <p:panel header="Eliminar Registros">
+                        <p:outputLabel value="Elimine registros de usuarios y libros de la biblioteca." />
+                    </p:panel>
+                    <!-- Panel de reportes -->
+                    <p:panel header="Reportes de Acciones en el Sistema">
+                        <p:outputLabel value="Visualice reportes detallados de las acciones realizadas en el sistema." />
+                    </p:panel>
+                </p:panelGrid>
+            </h:form>
+
         </ui:define>
+
     </ui:composition>
+
 </html>
 
