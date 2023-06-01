@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="./../templates/principal.xhtml">
+
+        <ui:define name="content">
+            
+            <f:view>
+
+
+                <h:form>
+                    <h1><h:outputText value="Agregar usuario"/></h1>
+                    <p:panelGrid columns="6"> 
+                        <p:outputLabel value="Nombre:" for="name" />
+                        <p:inputText id="name" value="#{cUsers.user.name}" title="Name" required="true" requiredMessage="The Name field is required."/>
+                        <p:outputLabel value="ApellidoP:" for="lastNameP" />
+                        <p:inputText id="lastNameP" value="#{cUsers.user.lastNameP}" title="LastNameP" required="true" requiredMessage="The LastNameP field is required."/>
+                        <p:outputLabel value="ApellidoM:" for="lastNameM" />
+                        <p:inputText id="lastNameM" value="#{cUsers.user.lastNameM}" title="LastNameM" required="true" requiredMessage="The LastNameM field is required."/>
+                        <p:outputLabel value="Domicilio:" for="domicilio" />
+                        <p:inputText id="domicilio" value="#{cUsers.user.domicilio}" title="Domicilio" />
+                        <p:outputLabel value="Tel:" for="tel" />
+                        <p:inputText id="tel" value="#{cUsers.user.tel}" title="Tel" />
+                        <p:outputLabel value="Sancion:" for="sanctions" />
+                        <p:inputText id="sanctions" value="#{cUsers.user.sanctions}" title="Sanctions" />
+                        <p:outputLabel value="SancMoney:" for="sancMoney" />
+                        <p:inputText id="sancMoney" value="#{cUsers.user.sancMoney}" title="SancMoney" required="true" requiredMessage="The SancMoney field is required."/>
+                    </p:panelGrid>
+                    <br></br>
+                    <p:messages id="messages" showDetail="true" closable="true" />
+
+                    <p:commandButton value="Submit" action="#{cUsers.insertUser()}" update="messages" />
+                    <br/><br/>
+                </h:form>
+            </f:view>
+
+            
+            <f:view>
+
+
+                <h:form>
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable  id="myTable" value="#{cUsers.users}" var="item" lazy="true">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="LastNameP"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastNameP}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="LastNameM"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastNameM}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Domicilio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.domicilio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tel}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sanctions"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sanctions}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="SancMoney"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sancMoney}"/>
+                        </p:column>
+                        <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Acciones"/>
+                        </f:facet>
+                            <p:commandButton value="Eliminar" action="#{cUsers.removeUser(item)}" 
+                                         update="myTable" process="@this"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </f:view>
+
+            
+        </ui:define>
+
+    </ui:composition>
+</html>

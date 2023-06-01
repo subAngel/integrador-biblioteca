@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:composition template="./../templates/principal.xhtml">
+
+
+        <ui:define name="content">
+            <f:view>
+
+                <p:messages id="messages" showDetail="true" globalOnly="true" />
+                <h:form>
+                    <h1><h:outputText value="Agregar libro"/></h1>
+                    <p:panelGrid columns="4">
+                        <p:outputLabel value="Titulo:" for="title" />
+                        <p:inputText id="title" value="#{cBooks.book.title}" title="Title" required="true" requiredMessage="El campo titulo no puede estar vacio"/> 
+
+                        <p:outputLabel value="Fecha:" for="date" />
+                        <p:inputText id="date" value="#{cBooks.book.date}" title="Date" required="true" requiredMessage="El campo fecha no puede estar vacio"/>
+                        <p:outputLabel value="Autor:" for="author" />
+                        <p:inputText id="author" value="#{cBooks.book.author}" title="Author" required="true" requiredMessage="El campo autor no puede estar vacio "/>
+                        <p:outputLabel value="Categoria:" for="category" />
+                        <p:inputText id="category" value="#{cBooks.book.category}" title="Category" required="true" requiredMessage="El campo categoria no puede estar vacio"/>
+                        <p:outputLabel value="Editorial:" for="edit" />
+                        <p:inputText id="edit" value="#{cBooks.book.edit}" title="Edit" required="true" requiredMessage="El campo editorial no puede estar vacio"/>
+                        <p:outputLabel value="Idioma:" for="lang" />
+                        <p:inputText id="lang" value="#{cBooks.book.lang}" title="Lang" required="true" requiredMessage="El campo idioma no puede estar vacio"/>
+                        <p:outputLabel value="Paginas:" for="pages" />
+                        <p:inputText id="pages" value="#{cBooks.book.pages}" title="Pages" required="true" requiredMessage="El campo paginas no puede estar vacio"/>
+                        <p:outputLabel value="Descripcion:" for="description" />
+                        <p:inputText id="description" value="#{cBooks.book.description}" title="Description" required="true" requiredMessage="El campo descripcion no puede estar vacio"/>
+                        <p:outputLabel value="Ejemplares:" for="ejemplares" />
+                        <p:inputText id="ejemplares" value="#{cBooks.book.ejemplares}" title="Ejemplares" required="true" requiredMessage="El campo ejemplares no puede estar vacio"/>
+                        <p:outputLabel value="Stock:" for="stock" />
+                        <p:inputText id="stock" value="#{cBooks.book.stock}" title="Stock" required="true" requiredMessage="El campo stock no puede estar vacio"/>
+                        <p:outputLabel value="Disponible:" for="available" />
+                        <p:inputText id="available" value="#{cBooks.book.available}" title="Available" required="true" requiredMessage="El campo disponible no puede estar vacio"/>
+                    </p:panelGrid>
+                    <br></br>
+                    <p:messages id="messages" showDetail="true" closable="true" />
+
+                    <p:commandButton value="Submit" action="#{cBooks.pruebainsert}" update="messages myForm:myTable" />
+                    <br/><br/>
+
+                </h:form>
+
+            </f:view>
+
+
+
+            <f:view>
+
+                <center>
+                <h:form id="myForm" class="full-screen-form">
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable id="myTable" value="#{cBooks.books}" var="item" lazy="true">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Title"/>
+                            </f:facet>
+                            <h:outputText value="#{item.title}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Author"/>
+                            </f:facet>
+                            <h:outputText value="#{item.author}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Category"/>
+                            </f:facet>
+                            <h:outputText value="#{item.category}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Edit"/>
+                            </f:facet>
+                            <h:outputText value="#{item.edit}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Lang"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lang}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pages"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pages}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ejemplares"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ejemplares}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Stock"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stock}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Available"/>
+                            </f:facet>
+                            <h:outputText value="#{item.available}"/>
+                        </p:column>
+                        
+                        <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Acciones"/>
+                        </f:facet>
+                            <p:commandButton value="Editar" action="#{cBooks.eliminar(item)}" 
+                                         update="myTable" process="@this"/>
+                        </p:column>
+                        
+                        <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Acciones"/>
+                        </f:facet>
+                            <p:commandButton value="Eliminar" action="#{cBooks.eliminar(item)}" 
+                                         update="myTable" process="@this"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                    </center>
+            </f:view>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+
+</html>

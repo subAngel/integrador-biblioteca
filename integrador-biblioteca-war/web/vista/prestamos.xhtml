@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../templates/principal.xhtml">
+    <ui:define name="content">
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Préstamos"/></h1>
+                <p:panelGrid columns="2">
+                   
+                    <p:outputLabel value="Folio usuario:" for="userId" />
+                    <p:inputText id="userId" value="#{cLendings.l.userId}" title="UserId" required="true" requiredMessage="The UserId field is required."/>
+                    <p:outputLabel value="Folio libro:" for="bookId" />
+                    <p:inputText id="bookId" value="#{cLendings.l.bookId}" title="BookId" required="true" requiredMessage="The BookId field is required."/>
+                    <p:outputLabel value="Fecha de salida:" for="dateOut" />
+                    <p:inputText id="dateOut" value="#{cLendings.l.dateOut}" title="DateOut" required="true" requiredMessage="The DateOut field is required."/>
+                    <p:outputLabel value="Feche de devolucion:" for="dateReturn" />
+                    <p:inputText id="dateReturn" value="#{cLendings.l.dateReturn}" title="DateReturn" required="true" requiredMessage="The DateReturn field is required."/>
+                </p:panelGrid>
+                <p:messages id="messages" showDetail="true" closable="true" />
+                <br></br>
+            <p:commandButton value="Submit" action="#{cLendings.insertarPrestamo()}" update="messages" />
+            
+            </h:form>
+            
+        </f:view>
+
+
+        
+    </ui:define>
+
+</ui:composition> 
+</html>
